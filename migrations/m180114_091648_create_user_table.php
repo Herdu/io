@@ -18,6 +18,12 @@ class m180114_091648_create_user_table extends Migration
             'password' => $this->string(256)->notNull(),
             'is_admin' => 'tinyint(1)',
         ]);
+
+        $this->insert('user', [
+            'email' => 'a@b.c',
+            'password' => '$2y$13$5vuNo1Ccv3uHXQcV1a.fQ.z1exdlOupvys4EPnBSJo8LGkYwAdSxe',
+            'is_admin' => 1,
+        ]);
     }
 
     /**
