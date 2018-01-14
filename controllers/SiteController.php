@@ -29,8 +29,8 @@ class SiteController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['index','logout'],
-                        'roles' => ['customer', 'admin'],
+                        'actions' => ['index','logout', 'about'],
+                        'roles' => ['?'],
                     ],
                     [
                         'allow' => true,
@@ -69,8 +69,12 @@ class SiteController extends Controller
         return $this->goHome();
     }
 
-    public function actionAdmin(){
-        return $this->render('admin');
+    public function actionAbout(){
+        return $this->render('about');
+    }
+
+    public function actionContact(){
+        return $this->render('contact');
     }
 
     public function actionError(){
