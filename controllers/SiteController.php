@@ -18,19 +18,27 @@ class SiteController extends Controller
     */
 
     public function behaviors(){
+
+        $guestActions = ['index','contact', 'gallery', 'login', 'about'];
+
+        $loggedActions = $guestActions +
+            [
+                ['logout']
+            ];
+
         return [
             'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['login'],
+                        'actions' => $guestActions,
                         'roles' => ['?'],
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['index','logout', 'about'],
-                        'roles' => ['?'],
+                        'actions' => $loggedActions,
+                        'roles' => ['@'],
                     ],
                     [
                         'allow' => true,
