@@ -1,8 +1,8 @@
 <?php
 
-namespace app\models\ar;
+namespace app\models;
 use yii\web\IdentityInterface;
-use app\models\aq\UserQuery;
+use app\models\UserQuery;
 
 use Yii;
 

@@ -1,7 +1,7 @@
 <?php
 
-namespace app\models\ar;
-use app\models\aq\PictureQuery;
+namespace app\models;
+use app\models\PictureQuery;
 
 use Yii;
 

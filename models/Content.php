@@ -1,7 +1,7 @@
 <?php
 
-namespace app\models\ar;
-use app\models\aq\ContentQuery;
+namespace app\models;
+use app\models\ContentQuery;
 use Yii;
 
 /**

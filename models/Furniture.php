@@ -1,7 +1,7 @@
 <?php
 
-namespace app\models\ar;
-use app\models\aq\FurnitureQuery;
+namespace app\models;
+    use app\models\FurnitureQuery;
 
 use Yii;
 

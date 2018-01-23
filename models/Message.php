@@ -1,7 +1,7 @@
 <?php
 
-namespace app\models\ar;
-use app\models\aq\MessageQuery;
+namespace app\models;
+use app\models\MessageQuery;
 
 use Yii;
 

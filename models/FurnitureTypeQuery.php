@@ -1,13 +1,13 @@
 <?php
 
-namespace app\models\aq;
+namespace app\models;
 
 /**
- * This is the ActiveQuery class for [[Furniture]].
+ * This is the ActiveQuery class for [[FurnitureType]].
  *
- * @see Furniture
+ * @see FurnitureType
  */
-class FurnitureQuery extends \yii\db\ActiveQuery
+class FurnitureTypeQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
@@ -16,7 +16,7 @@ class FurnitureQuery extends \yii\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return Furniture[]|array
+     * @return FurnitureType[]|array
      */
     public function all($db = null)
     {
@@ -25,7 +25,7 @@ class FurnitureQuery extends \yii\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return Furniture|array|null
+     * @return FurnitureType|array|null
      */
     public function one($db = null)
     {
