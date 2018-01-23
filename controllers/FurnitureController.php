@@ -8,6 +8,7 @@ use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * FurnitureController implements the CRUD actions for Furniture model.
@@ -74,6 +75,7 @@ class FurnitureController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'isUpdate' => false,
         ]);
     }
 
@@ -88,12 +90,31 @@ class FurnitureController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+            if($model->imageFile){
+                $url = $model->upload();
+                if ($url) {
+                    $model->image_url = $url;
+                    Yii::info($url);
+                    if($model->save(false)){
+                        return $this->redirect(['/furniture/view', 'id' => $model->id]);
+                    }
+                }
+            }else{
+                if($model->save()){
+                    return $this->redirect(['/furniture/view', 'id' => $model->id]);
+                }
+            }
+
+
+
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
             'model' => $model,
+            'isUpdate' => true,
         ]);
     }
 

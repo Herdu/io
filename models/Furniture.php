@@ -4,7 +4,7 @@ namespace app\models;
     use app\models\FurnitureQuery;
 
 use Yii;
-
+use yii\base\Security;
 /**
  * This is the model class for table "furniture".
  *
@@ -26,6 +26,9 @@ class Furniture extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+
+    public $imageFile;
+
     public static function tableName()
     {
         return 'furniture';
@@ -44,6 +47,7 @@ class Furniture extends \yii\db\ActiveRecord
             [['description'], 'string', 'max' => 1024],
             [['furniture_style_id'], 'exist', 'skipOnError' => true, 'targetClass' => FurnitureStyle::className(), 'targetAttribute' => ['furniture_style_id' => 'id']],
             [['furniture_type_id'], 'exist', 'skipOnError' => true, 'targetClass' => FurnitureType::className(), 'targetAttribute' => ['furniture_type_id' => 'id']],
+            [['imageFile'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg',  'message'=>'Niepoprawny format pliku.', 'wrongExtension'=>'Dozwolone rozszerzenia pliku to png i jpg.', 'tooBig' => 'Plik jest za duży. Maksymalny rozmiar to 2MB.'],
         ];
     }
 
@@ -95,5 +99,16 @@ class Furniture extends \yii\db\ActiveRecord
     public static function find()
     {
         return new FurnitureQuery(get_called_class());
+    }
+
+    public function upload()
+    {
+        if ($this->validate()) {
+            $url = 'uploads/'   . '-'. $this->imageFile->baseName . '.' . $this->imageFile->extension;
+            $this->imageFile->saveAs($url);
+            return $url;
+        } else {
+            return false;
+        }
     }
 }
