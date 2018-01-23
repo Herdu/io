@@ -20,7 +20,7 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
+            'identityClass' => 'app\models\ar\User',
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [
@@ -47,6 +47,8 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '' => 'site/index',
+                '<alias:\w+>' => 'site/<alias>',
             ],
         ],
 

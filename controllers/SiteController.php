@@ -19,7 +19,7 @@ class SiteController extends Controller
 
     public function behaviors(){
 
-        $guestActions = ['index','contact', 'gallery', 'login', 'about'];
+        $guestActions = ['index','contact', 'gallery', 'admin', 'about'];
 
         $loggedActions = $guestActions +
             [
@@ -55,21 +55,6 @@ class SiteController extends Controller
     }
 
 
-    public function actionLogin()
-    {
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-        $loginForm = new LoginForm();
-        if ($loginForm->load(Yii::$app->request->post()) && $loginForm->login()) {
-            Yii::$app->getSession()->addFlash('success', 'Pomyślnie zalogowano');
-            return $this->redirect(['site/index']);
-        }
-        return $this->render('login', [
-            'model' => $loginForm,
-        ]);
-    }
-
     public function actionLogout()
     {
         Yii::$app->user->logout();
@@ -87,5 +72,19 @@ class SiteController extends Controller
 
     public function actionError(){
         return $this->render('error');
+    }
+
+    public function actionAdmin(){
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+        $loginForm = new LoginForm();
+        if ($loginForm->load(Yii::$app->request->post()) && $loginForm->login()) {
+            Yii::$app->getSession()->addFlash('success', 'Pomyślnie zalogowano');
+            return $this->redirect(['site/index']);
+        }
+        return $this->render('admin', [
+            'model' => $loginForm,
+        ]);
     }
 }
