@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Furniture */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Furnitures', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Meble', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="furniture-view">
@@ -15,11 +15,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Edytuj', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Usuń', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Czy na pewno?',
                 'method' => 'post',
             ],
         ]) ?>

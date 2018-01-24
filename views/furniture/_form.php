@@ -8,7 +8,6 @@ use yii\helpers\Url;
 /* @var $model app\models\Furniture */
 /* @var $form yii\widgets\ActiveForm */
 
-var_dump($model);
 ?>
 
 <div class="furniture-form">
@@ -32,22 +31,19 @@ var_dump($model);
 
     <?= $form->field($model, 'price')->textInput(['type'=>'number']) ?>
 
-    <?= $form->field($model, 'image_url')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'description')->textarea(['rows' => 6, 'maxlength' => true]) ?>
 
     <?= $form->field($model, 'is_renovated')->checkbox()?>
 
-    <?= $form->field($model, 'furniture_type_id')->textInput() ?>
+    <?= $form->field($model, 'furniture_type_id')->dropDownList($types, ['prompt' =>'Wybierz typ mebla']) ?>
 
-    <?= $form->field($model, 'furniture_style_id')->textInput() ?>
+    <?= $form->field($model, 'furniture_style_id')->dropDownList($styles, ['prompt' =>'Wybierz styl mebla']) ?>
 
-    <div class="col-sm-6">
-        <?= $form->field($model, 'imageFile')->fileInput()->label('Zdjęcie') ?>
-    </div>
+    <?= $form->field($model, 'imageFile')->fileInput()->label('Zdjęcie') ?>
+
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Zapisz', ['class' => 'btn blue-btn']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

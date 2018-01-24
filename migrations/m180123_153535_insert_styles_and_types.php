@@ -21,6 +21,8 @@ class m180123_153535_insert_styles_and_types extends Migration
      */
     public function safeDown()
     {
+        $this->delete('furniture_style');
+        $this->delete('furniture_type');
 
     }
 

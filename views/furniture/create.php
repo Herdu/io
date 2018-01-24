@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Furniture */
 
-$this->title = 'Create Furniture';
-$this->params['breadcrumbs'][] = ['label' => 'Furnitures', 'url' => ['index']];
+$this->title = 'Dodaj mebel';
+$this->params['breadcrumbs'][] = ['label' => 'Meble', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="furniture-create">
@@ -16,7 +16,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $this->render('_form', [
         'model' => $model,
-        'isUpdate' => $false,
+        'isUpdate' => false,
+        'types' => $types,
+        'styles' => $styles,
     ]) ?>
 
 </div>

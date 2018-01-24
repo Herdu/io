@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Furniture */
 
-$this->title = 'Update Furniture: {nameAttribute}';
-$this->params['breadcrumbs'][] = ['label' => 'Furnitures', 'url' => ['index']];
+$this->title = 'Zaktualizuj mebel: {nameAttribute}';
+$this->params['breadcrumbs'][] = ['label' => 'Meble', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Edycja';
 ?>
 <div class="furniture-update">
 
@@ -17,6 +17,8 @@ $this->params['breadcrumbs'][] = 'Update';
     <?= $this->render('_form', [
         'model' => $model,
         'isUpdate' => true,
+        'types' => $types,
+        'styles' => $styles,
     ]) ?>
 
 </div>

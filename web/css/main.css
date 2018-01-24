@@ -95,3 +95,18 @@ a.desc:after {
 body {
   margin: 0;
   padding: 0; }
+
+textarea {
+  resize: none; }
+
+.furniture-index .mini-image {
+  width: 200px;
+  padding: 10px; }
+  .furniture-index .mini-image img {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    border: solid #1e5799 8px; }

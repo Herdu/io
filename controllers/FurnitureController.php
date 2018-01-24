@@ -9,6 +9,9 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
+use app\models\FurnitureType;
+use app\models\FurnitureStyle;
+use yii\helpers\ArrayHelper;
 
 /**
  * FurnitureController implements the CRUD actions for Furniture model.
@@ -73,9 +76,17 @@ class FurnitureController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
+        $types = FurnitureType::find()->all();
+        $types = ArrayHelper::map($types, 'id', 'name');
+
+        $styles = FurnitureStyle::find()->all();
+        $styles = ArrayHelper::map($styles, 'id', 'name');
+
         return $this->render('create', [
             'model' => $model,
             'isUpdate' => false,
+            'types' => $types,
+            'styles' => $styles,
         ]);
     }
 
@@ -112,9 +123,19 @@ class FurnitureController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
+
+        $types = FurnitureType::find()->all();
+        $types = ArrayHelper::map($types, 'id', 'name');
+
+        $styles = FurnitureStyle::find()->all();
+        $styles = ArrayHelper::map($styles, 'id', 'name');
+
+
         return $this->render('update', [
             'model' => $model,
             'isUpdate' => true,
+            'types' => $types,
+            'styles' => $styles,
         ]);
     }
 
