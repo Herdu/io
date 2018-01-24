@@ -19,7 +19,7 @@ class AdminController extends Controller
 
     public function behaviors(){
 
-        $actions = ['index'];
+        $actions = ['index', 'gallery'];
 
         return [
             'access' => [
@@ -38,6 +38,10 @@ class AdminController extends Controller
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+    public function actionGallery(){
+        return $this->render('gallery');
     }
 
 }
