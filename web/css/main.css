@@ -99,14 +99,77 @@ body {
 textarea {
   resize: none; }
 
-.furniture-index .mini-image {
+.filter-header {
+  display: block;
+  text-align: center; }
+  .filter-header h2 {
+    display: inline-block; }
+  .filter-header .filter-control {
+    font-size: 40px;
+    top: 10px;
+    margin-left: 30px; }
+    .filter-header .filter-control:hover {
+      cursor: pointer;
+      color: #885106; }
+  .filter-header #hide-filters {
+    display: none; }
+
+.filters {
+  padding: 10px 30px;
+  text-align: center;
+  display: none; }
+  .filters .filter-pair {
+    display: inline-block;
+    margin-left: 20px;
+    margin-right: 20px; }
+  .filters .filter-item {
+    width: 200px;
+    display: inline-block; }
+  .filters .buttons {
+    padding-top: 25px; }
+
+.catalog .grid-header {
+  text-align: center; }
+
+.catalog .mini-image {
   width: 200px;
-  padding: 10px; }
-  .furniture-index .mini-image img {
+  border: none;
+  padding: 0 !important; }
+  .catalog .mini-image img {
     width: 200px;
     height: 150px;
     object-fit: cover;
     margin-left: auto;
     margin-right: auto;
-    background-color: white;
-    border: solid #1e5799 8px; }
+    background-color: white; }
+
+.catalog .price, .catalog .style {
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+  margin-top: 20px; }
+
+.catalog .name {
+  display: block;
+  text-align: center;
+  padding-top: 30px;
+  font-size: 22px; }
+
+.catalog .price {
+  font-size: 24px;
+  font-weight: bold; }
+
+.catalog table {
+  border-collapse: separate;
+  border-spacing: 0 20px;
+  border: none; }
+  .catalog table thead {
+    display: none !important; }
+  .catalog table tbody tr {
+    border: solid #885106 1px; }
+    .catalog table tbody tr td:not(:first-child) {
+      border: none; }
+  .catalog table tbody tr:nth-child(even) {
+    background-color: #ffeee9; }
+  .catalog table tbody tr:nth-child(odd) {
+    background-color: #ffdbc8; }

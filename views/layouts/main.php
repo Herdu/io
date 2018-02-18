@@ -38,9 +38,10 @@ AppAsset::register($this);
     ]);
 
     $menu = [
-        ['label' => 'Home', 'url' => Url::to(['site/index'])],
-        ['label' => 'About', 'url' => Url::to(['site/about'])],
-        ['label' => 'Contact', 'url' => Url::to(['site/contact'])],
+        ['label' => 'Galeria', 'url' => Url::to(['site/gallery'])],
+        ['label' => 'Katalog', 'url' => Url::to(['site/index'])],
+        ['label' => 'Usługi', 'url' => Url::to(['site/services'])],
+        ['label' => 'Kontakt', 'url' => Url::to(['site/contact'])],
     ];
 
 

@@ -1,0 +1,43 @@
+.filter-header{
+  display: block;
+  text-align: center;
+
+  h2{
+    display: inline-block;
+  }
+
+  .filter-control{
+    font-size: 40px;
+    top: 10px;
+    margin-left: 30px;
+    &:hover{
+      cursor: pointer;
+      color: $main;
+    }
+  }
+
+  #hide-filters{
+    display: none;
+  }
+}
+
+.filters{
+  padding: 10px 30px;
+  text-align: center;
+  display: none;
+
+  .filter-pair{
+    display: inline-block;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .filter-item{
+    width: 200px;
+    display: inline-block;
+  }
+
+  .buttons{
+    padding-top: 25px;
+  }
+}

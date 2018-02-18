@@ -1,11 +1,80 @@
 <?php
 
+use yii\helpers\Html;
+use yii\grid\GridView;
+use yii\helpers\Url;
+
 /* @var $this yii\web\View */
+/* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'My Yii Application';
+$this->title = 'Meble';
 ?>
-<div class="site-index">
+<div class="catalog">
 
-    <h1>Główna strona</h1>
+    <?php echo Yii::$app->controller->renderPartial('inc/filters', array('model'=> $filterForm));  ?>
 
+
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'summary' => "<div class='grid-header'>Wyświetlono <strong>{begin} - {end}</strong> z {totalCount}. Strona {page} z {pageCount}.</div>",
+        'emptyText' => 'Brak danych do wyświetlenia.',
+        'rowOptions' => function ($model, $index, $widget, $grid){
+            return ['class'=>'furniture-row'];
+        },
+        'columns' => [
+            [
+                'label' => 'Podgląd',
+                'format' => 'image',
+                'contentOptions' => ['class' => 'mini-image'],
+                'headerOptions' => [],
+                'value' => function ($model) {
+                    if(empty($model->photo_url)){
+                        return Url::to('@web/image/placeholder.png');
+                    }else{
+                        return Url::to(Url::base().'/'.$model->photo_url);
+                    }
+                }
+            ],
+            [
+                'contentOptions' => ['class' => 'name'],
+                'headerOptions' => [],
+                'value' => function ($model) {
+                        return $model->name;
+                }
+            ],
+            [
+                'label' => 'Cena',
+                'format' => 'raw',
+                'contentOptions' => ['class' => 'price'],
+                'value' => function ($model) {
+                    return $model->price . '.-';
+
+                }
+            ],
+            [
+                'label' => 'Styl',
+                'format' => 'raw',
+                'contentOptions' => ['class' => 'style'],
+                'value' => function ($model) {
+                    return $model->furnitureStyle->name;
+
+                }
+            ]
+        ],
+    ]); ?>
 </div>
+
+<?php
+
+$this->registerJs('
+    $(document).ready(function(){
+        $(".furniture-row").on("click", function(){
+            var id = $(this).attr("data-key");
+            window.location.href = "view?id=" + id;
+        });
+    });
+
+');
+
+
+?>

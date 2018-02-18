@@ -31,7 +31,15 @@ use yii\helpers\Url;
 
     <?= $form->field($model, 'price')->textInput(['type'=>'number']) ?>
 
+    <?= $form->field($model, 'width')->textInput(['type'=>'number']) ?>
+
+    <?= $form->field($model, 'height')->textInput(['type'=>'number']) ?>
+
+    <?= $form->field($model, 'depth')->textInput(['type'=>'number']) ?>
+
     <?= $form->field($model, 'description')->textarea(['rows' => 6, 'maxlength' => true]) ?>
+
+    <?= $form->field($model, 'period')->textInput(['type'=>'number']) ?>
 
     <?= $form->field($model, 'is_renovated')->checkbox()?>
 
