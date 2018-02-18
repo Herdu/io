@@ -12,6 +12,9 @@ use app\models\Furniture;
 use yii\data\ActiveDataProvider;
 use app\models\FurnitureFilterForm;
 use yii\web\NotFoundHttpException;
+use app\models\MessageTitle;
+use app\models\Message;
+use yii\helpers\ArrayHelper;
 
 class SiteController extends Controller
 {
@@ -90,7 +93,23 @@ class SiteController extends Controller
     }
 
     public function actionContact(){
-        return $this->render('contact');
+        $model = new Message();
+
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate()){
+                if($model->save()) {
+                    \Yii::$app->getSession()->setFlash('success', 'Pomyślnie wysłano wiadomość');
+                    $model = new Message();
+                }
+        };
+
+        $messageTitles = MessageTitle::find()->asArray()->all();
+        $messageTitles = ArrayHelper::getColumn($messageTitles, 'name');
+
+        return $this->render('contact', [
+            'message' => $model,
+            'messageTitles' => $messageTitles,
+        ]);
     }
 
 
@@ -120,8 +139,26 @@ class SiteController extends Controller
         if (($model = Furniture::findOne($id)) == null) {
             throw new NotFoundHttpException('Wybrany element nie istnieje, lub nie masz do niego uprawnień.');
         }
+
+        $message = new Message();
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate()){
+            if($model->save()) {
+                \Yii::$app->getSession()->setFlash('success', 'Pomyślnie wysłano wiadomość');
+                $model = new Message();
+            }
+        };
+
+        $messageTitles = MessageTitle::find()->asArray()->all();
+
+        $messageTitles = ArrayHelper::getColumn($messageTitles, 'name');
+
+        $messageTitles = array_merge([$model->name], $messageTitles);
+
         return $this->render('view', [
             'model' => $model,
+            'message' => $message,
+            'messageTitles' => $messageTitles,
         ]);
     }
 

@@ -8,7 +8,7 @@ use yii\helpers\Url;
 ?>
 
 
-<div class="row offer-form">
+<div class="row">
 
     <div class="filter-header">
         <h2>Filtrowanie</h2>

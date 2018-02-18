@@ -173,3 +173,25 @@ textarea {
     background-color: #ffeee9; }
   .catalog table tbody tr:nth-child(odd) {
     background-color: #ffdbc8; }
+
+.services .contact-row .col-sm-12 {
+  background-image: url("./../image/wood-bg.jpg");
+  background-size: cover;
+  height: 150px;
+  position: relative; }
+  .services .contact-row .col-sm-12 button {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+
+.contact-form-row {
+  margin: 100px auto;
+  max-width: 500px; }
+
+#map {
+  margin-top: 80px;
+  margin-bottom: 0;
+  width: 100%;
+  height: 300px; }

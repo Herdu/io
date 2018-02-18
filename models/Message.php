@@ -38,6 +38,7 @@ class Message extends \yii\db\ActiveRecord
             [['email', 'message_title'], 'string', 'max' => 128],
             [['furniture_id'], 'exist', 'skipOnError' => true, 'targetClass' => Furniture::className(), 'targetAttribute' => ['furniture_id' => 'id']],
             [['message_title_id'], 'exist', 'skipOnError' => true, 'targetClass' => MessageTitle::className(), 'targetAttribute' => ['message_title_id' => 'id']],
+            [['text'], 'safe'],
         ];
     }
 
@@ -49,9 +50,10 @@ class Message extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'email' => Yii::t('app', 'Email'),
-            'message_title_id' => Yii::t('app', 'Message Title ID'),
-            'message_title' => Yii::t('app', 'Message Title'),
+            'message_title_id' => 'Tytuł',
+            'message_title' => 'Tytuł',
             'furniture_id' => Yii::t('app', 'Furniture ID'),
+            'text' => 'Treść',
         ];
     }
 

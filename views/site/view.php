@@ -26,23 +26,34 @@ $this->title = $model->name;
         <img src="<?=$url?>" class="img-responsive">
     </div>
 
-    <div>
-        styl: <?= $model->furnitureStyle->name; ?>
-    </div>
-    <div>
-        okres: <?= $model->period; ?>
-    </div>
-    <div>
-        wymiary:
-        <div><?= $model->width; ?> [szerokość]</div>
-        <div><?= $model->height; ?> [wysokość]</div>
-        <div><?= $model->depth; ?> [głębokość]</div>
+    <div class="col-sm-6">
+        <div>
+            styl: <?= $model->furnitureStyle->name; ?>
+        </div>
+        <div>
+            okres: <?= $model->period; ?>
+        </div>
+        <div>
+            wymiary:
+            <div><?= $model->width; ?> [szerokość]</div>
+            <div><?= $model->height; ?> [wysokość]</div>
+            <div><?= $model->depth; ?> [głębokość]</div>
+        </div>
     </div>
 
     <div class="col-sm-12">
         <?= $model->description; ?>
     </div>
 
-
-
 </div>
+
+    <?php
+        echo $this->render('inc/contactForm', [
+                'model' => $message,
+                'furnitureId' => $model->id,
+                'messageTitles' => $messageTitles,
+        ])
+    ?>
+
+
+

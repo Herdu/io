@@ -1,0 +1,17 @@
+.services{
+  & .contact-row{
+    .col-sm-12{
+      background-image: url('./../image/wood-bg.jpg');
+      background-size: cover;
+      height: 150px;
+      position: relative;
+      button{
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+}
