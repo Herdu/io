@@ -59,7 +59,7 @@ class Picture extends \yii\db\ActiveRecord
     public function upload()
     {
         if ($this->validate()) {
-            $url = 'gallery/'   .Yii::$app->security->generateRandomString(8) . '-'. $this->imageFile->baseName . '.' . $this->imageFile->extension;
+            $url = 'gallery-photos/'   .Yii::$app->security->generateRandomString(8) . '-'. $this->imageFile->baseName . '.' . $this->imageFile->extension;
             $this->imageFile->saveAs($url);
             return $url;
         } else {

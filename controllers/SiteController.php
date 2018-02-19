@@ -15,6 +15,7 @@ use yii\web\NotFoundHttpException;
 use app\models\MessageTitle;
 use app\models\Message;
 use yii\helpers\ArrayHelper;
+use app\models\Picture;
 
 class SiteController extends Controller
 {
@@ -118,7 +119,12 @@ class SiteController extends Controller
     }
 
     public function actionGallery(){
-        return $this->render('gallery');
+
+        $photos = Picture::find()->all();
+
+        return $this->render('gallery', [
+            'photos' => $photos,
+        ]);
     }
 
     public function actionAdmin(){
