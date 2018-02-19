@@ -16,10 +16,10 @@ $this->title = $model->name;
 
 
     <?php
-    if(empty($model->photo_url)){
+    if(empty($model->image_url)){
         $url = Url::to('@web/image/placeholder.png');
     }else {
-        $url = Url::to(Url::base() . '/' . $model->photo_url);
+        $url = Url::to(Url::base() . '/' . $model->image_url);
     }
     ?>
     <div class="col-sm-6">

@@ -72,8 +72,22 @@ class FurnitureController extends Controller
     {
         $model = new Furniture();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+            if ($model->imageFile) {
+                $url = $model->upload();
+                if ($url) {
+                    $model->image_url = $url;
+                    Yii::info($url);
+                    if ($model->save(false)) {
+                        return $this->redirect(['/furniture/view', 'id' => $model->id]);
+                    }
+                }
+            } else {
+                if ($model->save()) {
+                    return $this->redirect(['/furniture/view', 'id' => $model->id]);
+                }
+            }
         }
 
         $types = FurnitureType::find()->all();

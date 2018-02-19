@@ -28,10 +28,10 @@ $this->title = 'Meble';
                 'contentOptions' => ['class' => 'mini-image'],
                 'headerOptions' => [],
                 'value' => function ($model) {
-                    if(empty($model->photo_url)){
+                    if(empty($model->image_url)){
                         return Url::to('@web/image/placeholder.png');
                     }else{
-                        return Url::to(Url::base().'/'.$model->photo_url);
+                        return Url::to(Url::base().'/'.$model->image_url);
                     }
                 }
             ],
