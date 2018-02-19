@@ -47,7 +47,11 @@ echo $this->render('inc/contactForm', [
     </div>
 </div>
 
+</div> <!-- end of container in layout -->
+
 <div id="map"></div>
+
+<div>
 
 
 <script>
