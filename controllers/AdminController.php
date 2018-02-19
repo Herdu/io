@@ -41,6 +41,8 @@ class AdminController extends Controller
     }
 
     public function actionGallery(){
+
+
         return $this->render('gallery');
     }
 

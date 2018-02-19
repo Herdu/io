@@ -109,7 +109,7 @@ class Furniture extends \yii\db\ActiveRecord
     public function upload()
     {
         if ($this->validate()) {
-            $url = 'uploads/'   . '-'. $this->imageFile->baseName . '.' . $this->imageFile->extension;
+            $url = 'uploads/'   .Yii::$app->security->generateRandomString(8) . '-'. $this->imageFile->baseName . '.' . $this->imageFile->extension;
             $this->imageFile->saveAs($url);
             return $url;
         } else {

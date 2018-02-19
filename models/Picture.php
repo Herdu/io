@@ -14,6 +14,7 @@ use Yii;
  */
 class Picture extends \yii\db\ActiveRecord
 {
+    public $imageFile;
     /**
      * @inheritdoc
      */
@@ -28,8 +29,9 @@ class Picture extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['image_url', 'title'], 'required'],
+            [['title'], 'required'],
             [['image_url', 'title'], 'string', 'max' => 128],
+            [['imageFile'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg',  'message'=>'Niepoprawny format pliku.', 'wrongExtension'=>'Dozwolone rozszerzenia pliku to png i jpg.', 'tooBig' => 'Plik jest za duży. Maksymalny rozmiar to 2MB.'],
         ];
     }
 
@@ -52,5 +54,16 @@ class Picture extends \yii\db\ActiveRecord
     public static function find()
     {
         return new PictureQuery(get_called_class());
+    }
+
+    public function upload()
+    {
+        if ($this->validate()) {
+            $url = 'gallery/'   .Yii::$app->security->generateRandomString(8) . '-'. $this->imageFile->baseName . '.' . $this->imageFile->extension;
+            $this->imageFile->saveAs($url);
+            return $url;
+        } else {
+            return false;
+        }
     }
 }
