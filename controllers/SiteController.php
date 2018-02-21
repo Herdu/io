@@ -108,11 +108,13 @@ class SiteController extends Controller
     public function actionContact(){
         $model = new Message();
 
-
         if ($model->load(Yii::$app->request->post()) && $model->validate()){
                 if($model->save()) {
                     \Yii::$app->getSession()->setFlash('success', 'Pomyślnie wysłano wiadomość');
                     $model = new Message();
+                }else{
+                    \Yii::$app->getSession()->setFlash('error', 'Przepraszamy, nie udało się wysłać wiadomości.');
+
                 }
         };
 
@@ -160,10 +162,14 @@ class SiteController extends Controller
 
         $message = new Message();
 
-        if ($model->load(Yii::$app->request->post()) && $model->validate()){
+        if ($message->load(Yii::$app->request->post()) && $message->validate()){
             if($model->save()) {
                 \Yii::$app->getSession()->setFlash('success', 'Pomyślnie wysłano wiadomość');
-                $model = new Message();
+
+                $message = new Message();
+            }else{
+                \Yii::$app->getSession()->setFlash('error', 'Przepraszamy. Nie udało się wysłać wiadomości.');
+
             }
         };
 

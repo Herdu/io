@@ -33,7 +33,7 @@ class Message extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['email', 'text', 'title'], 'required', 'message'=>'Pole "{attribute}" nie może pozostać puste.'],
+            [['email', 'text', 'message_title'], 'required', 'message'=>'Pole "{attribute}" nie może pozostać puste.'],
             [['message_title_id', 'furniture_id'], 'integer' ,  'message'=>'Pole "{attribute}" musi być liczbą całkowitą.'],
             [['email'], 'email', 'message' => 'To pole musi być prawidłowym adresem email.'],
             [['email', 'message_title'], 'string', 'max' => 128, 'message' => 'Pole "{attribute}" musi być łańcuchem znaków.', 'tooLong' => 'To pole może mieć max. długość 128 znaków.'],
