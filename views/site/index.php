@@ -11,7 +11,7 @@ $this->title = 'Meble';
 ?>
 <div class="catalog">
 
-    <?php echo Yii::$app->controller->renderPartial('inc/filters', array('model'=> $filterForm, 'styles' => $styles, 'types' => $types));  ?>
+    <?php echo Yii::$app->controller->renderPartial('inc/filters', array('model'=> $filterForm, 'styles' => $styles, 'types' => $types, 'formIsEmpty' => $formIsEmpty));  ?>
 
 
     <?= GridView::widget([

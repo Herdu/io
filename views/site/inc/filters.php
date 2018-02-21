@@ -25,7 +25,7 @@ use yii\helpers\Url;
     ]); ?>
 
 
-    <div class="filters">
+    <div class="filters" style="display: <?= $formIsEmpty ? 'none' : 'block' ?>">
 
 
         <div class="filter-pair">
@@ -84,8 +84,18 @@ use yii\helpers\Url;
     $this->registerJs('
         $("#clear-filter-form-btn").on("click", function(){
             $("#filter-form input[type=\'number\']").val("").trigger("change");
-            $(".field-offerfilterform-isrenovated option").attr("selected", false);
-            $(".field-offerfilterform-isrenovated option[value=\'0\']").attr("selected", "selected");
+            
+            
+            $("#furniturefilterform-isrenovated option").attr("selected", false);
+            $("#furniturefilterform-isrenovated option").first().attr("selected", "selected");
+            
+            $("#furniturefilterform-styleid option").attr("selected", false);
+            $("#furniturefilterform-styleid option").first().attr("selected", "selected");
+            
+            $("#furniturefilterform-typeid option").attr("selected", false);
+            $("#furniturefilterform-typeid option").first().attr("selected", "selected");
+            
+            $(this).parent().find("button[type=\'submit\']").trigger("click");
         });
     ', View::POS_READY);
 

@@ -89,6 +89,7 @@ class SiteController extends Controller
             'filterForm' => $filterForm,
             'styles' => $styles,
             'types' => $types,
+            'formIsEmpty' => $filterForm->isEmpty(),
         ]);
     }
 

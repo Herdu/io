@@ -7,12 +7,11 @@ use yii\bootstrap\Modal;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Furniture */
-
 $this->title = $model->name;
 ?>
 <div class="row furniture-view">
     <div class="col-sm-2 back-btn">
-        <a href="site/index">
+        <a href="<?php  echo (strpos(Yii::$app->request->referrer, Url::to(['site/index'], true) . "?") !== false) ? Yii::$app->request->referrer : Url::to(['site/index'], true) ; ?>">
             < powrót
         </a>
     </div>

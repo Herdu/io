@@ -21,17 +21,12 @@ class FurnitureFilterForm extends Model
             [[
                 'priceFrom',
                 'priceTo',
-                'numberOfRoomsFrom',
-                'numberOfRoomsTo',
-                'areaFrom',
-                'areaTo',
-                'storeyFrom',
-                'storeyTo',
             ], 'integer', 'skipOnEmpty' => true,  'min' => 0,
                 'message' => 'Wartość pola "{attribute}" musi być liczbą całkowitą',
                 'tooSmall' => 'Wartość pola "{attribute}" nie może być ujemna',
             ],
-            [['isRenovated', 'text', 'styleId', 'typeId'], 'safe'],
+            [['isRenovated', 'styleId', 'typeId'], 'safe'],
+            [[ 'text'], 'string', 'max' => 32, 'message' => 'Pole "{attribute}" musi być łańcuchem znaków.', 'tooLong' => 'To pole może mieć max. długość 32 znaków.']
         ];
     }
     public function attributeLabels()
@@ -40,7 +35,10 @@ class FurnitureFilterForm extends Model
             'priceFrom' => 'Cena od [zł]',
             'priceTo' => 'Cena do [zł]',
             'hasBalcony' => 'Po renowacji',
-            'text' => 'Wyszukaj'
+            'text' => 'Wyszukaj',
+            'isRenovated' => 'Po renowacji',
+            'styleId' => 'Styl',
+            'typeId' => 'Typ',
         ];
     }
 
@@ -71,5 +69,17 @@ class FurnitureFilterForm extends Model
                 ['LIKE', 'furniture_type.name', $this->text],
             ]);
         }
+
+        if(!empty($this->styleId)){
+            $query = $query->andWhere(['furniture.furniture_style_id' => $this->styleId]);
+        }
+
+        if(!empty($this->typeId)){
+            $query = $query->andWhere(['furniture.furniture_type_id' => $this->typeId]);
+        }
+    }
+
+    public function isEmpty(){
+        return empty($this->priceFrom) && empty($this->priceTo) && empty($this->isRenovated) && empty($this->styleId) && empty($this->typeId);
     }
 }
