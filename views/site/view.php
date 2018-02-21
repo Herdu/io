@@ -66,7 +66,10 @@ $this->title = $model->name;
 
     <?php
 
-
+    if(empty($model->image_url)){
+        echo Html::a('Wygeneruj dokument', ['pdf', 'id' => $model->id, 'withPhotos' => false ], ['class'=>'btn']);
+    }
+    else{
     Modal::begin([
         'header' => '<h2>Wybierz rodzaj dokumentu</h2>',
         'toggleButton' => ['label' => 'Wygeneruj dokument', 'class' => 'btn'],
@@ -77,7 +80,7 @@ $this->title = $model->name;
 
 
         Modal::end();
-
+    }
     ?>
     </div>
 

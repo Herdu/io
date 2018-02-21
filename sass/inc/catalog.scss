@@ -9,8 +9,8 @@
     border: none;
     padding: 0 !important;
     img{
-      width: 200px;
-      height: 150px;
+      width: 300px;
+      height: 200px;
       object-fit: cover;
       margin-left: auto;
       margin-right: auto;
@@ -27,39 +27,109 @@
   .name{
     display: block;
     text-align: center;
-    padding-top: 30px;
-    font-size: 22px;
+    padding-top: 50px;
+    font-size: 30px;
+    font-weight: bold;
+    color: $main;
   }
 
   .price{
     font-size: 24px;
     font-weight: bold;
+    &:before{
+      content: 'cena';
+      font-size: 15px;
+      color: $main;
+      padding-bottom: 7px;
+      position: relative;
+      top: -3px;
+      margin-right: 10px;
+    }
+  }
+
+  .style{
+    font-size: 24px;
+    font-weight: bold;
+    &:before{
+      content: 'styl';
+      font-size: 15px;
+      color: $main;
+      padding-bottom: 7px;
+      position: relative;
+      top: -3px;
+      margin-right: 10px;
+    }
   }
 
   table{
-    border-collapse:separate;
-    border-spacing: 0 20px;
     border: none;
+    border-collapse:separate;
+    border-spacing:0 20px;
+
     thead{
       display: none !important;
     }
     tbody{
       tr{
-        border: solid $main 1px;
+        &:hover{
+          cursor: pointer;
+        }
+
         td:not(:first-child){
           border: none;
         }
       }
 
       tr:nth-child(even){
-        background-color: #ffeee9;
+        background-color: $main-light;
       }
       tr:nth-child(odd){
-        background-color: #ffdbc8;
+        background-color: $main-light;
       }
 
     }
-  }
+
+
+    @media only screen and (max-width: 992px) {
+      td:first-child {
+        display: inline-block;
+        width: 50%;
+      }
+
+      .name{
+        display: inline-block;
+        width: 49%;
+      }
+    }
+
+    @media only screen and (max-width: 992px) {
+      td:first-child {
+        display: block;
+        width: 100%;
+        text-align: center;
+      }
+
+      .name{
+        display: block;
+        width: 100%;
+      }
+    }
+
+    @media only screen and (max-width: 500px) {
+      .price, .style{
+        display: block;
+        width: 100%;
+      }
+    }
+
+    @media only screen and (max-width: 500px) {
+      .mini-image img{
+        width: 200px !important;
+        height: 166px !important;
+      }
+    }
+
+    }
 
 
 }
