@@ -19,7 +19,7 @@ echo $this->render('inc/contactForm', [
 ?>
 
 <div class="row contact-row">
-    <div class="col-sm-6">
+    <div class="col-sm-6 text-center left-col">
         <p>
             754-453-566
         </p>
@@ -28,7 +28,7 @@ echo $this->render('inc/contactForm', [
         </p>
     </div>
 
-    <div class="col-sm-6">
+    <div class="col-sm-6 text-center right-col">
         <p>
             Artur Żmijewski
         </p>

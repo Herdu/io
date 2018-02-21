@@ -1,0 +1,25 @@
+.gallery-row{
+  &>div{
+    img{
+      object-fit: cover;
+      height: 150px;
+      width: 100%;
+    }
+  }
+}
+
+
+#gallery-modal{
+  .modal-header{
+    text-align: center;
+  }
+  .modal-dialog{
+    width: 100% !important;
+  }
+  .modal-body{
+    text-align: center;
+    img{
+      margin: auto;
+    }
+  }
+}
