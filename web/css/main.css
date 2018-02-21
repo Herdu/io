@@ -104,7 +104,7 @@ form div.required label.control-label:after {
   color: #ff6000;
   font-size: 12px; }
 
-.btn {
+.btn, .btn-primary {
   color: #885106;
   background-color: white;
   border: solid #885106 1px;
@@ -113,8 +113,10 @@ form div.required label.control-label:after {
   font-weight: bold;
   border-radius: 5px;
   margin: auto; }
-  .btn:hover {
-    background-color: #ffe39d; }
+  .btn:hover, .btn:active, .btn:focus, .btn:visited, .btn-primary:hover, .btn-primary:active, .btn-primary:focus, .btn-primary:visited {
+    background-color: #ffe39d !important;
+    color: black !important;
+    border-color: #885106 !important; }
 
 .buttons {
   text-align: center; }
@@ -132,8 +134,45 @@ form div.required label.control-label:after {
   .navbar-inverse .navbar-nav > li > a:active {
     color: black; }
 
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+  background-color: #885106; }
+
+.navbar-inverse .navbar-toggle {
+  border-color: #885106; }
+
 .furniture-row:hover {
   cursor: pointer; }
+
+.furniture-view .back-btn a {
+  color: #885106;
+  text-decoration: none; }
+
+.furniture-view .title {
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 30px; }
+
+.furniture-view img {
+  border: solid #ffe39d 3px; }
+
+.furniture-view table {
+  font-size: 16px;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+  margin-left: 30px; }
+  .furniture-view table td {
+    padding-left: 30%; }
+
+.furniture-view .description {
+  margin-top: 30px;
+  margin-bottom: 50px;
+  padding: 0 15%; }
+
+.furniture-view .generate {
+  text-align: center; }
+  .furniture-view .generate .btn {
+    margin: 10px; }
 
 .filter-row {
   margin-bottom: 50px; }
@@ -295,7 +334,8 @@ form div.required label.control-label:after {
   #gallery-modal .modal-header {
     text-align: center; }
   #gallery-modal .modal-dialog {
-    width: 100% !important; }
+    width: 100% !important;
+    margin: 0 !important; }
   #gallery-modal .modal-body {
     text-align: center; }
     #gallery-modal .modal-body img {

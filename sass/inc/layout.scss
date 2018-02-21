@@ -14,7 +14,7 @@ form div.required label.control-label:after {
   font-size: 12px;
 }
 
-.btn{
+.btn, .btn-primary {
   color: $main;
   background-color: white;
   border: solid $main 1px;
@@ -23,8 +23,10 @@ form div.required label.control-label:after {
   font-weight: bold;
   border-radius: 5px;
   margin: auto;
-  &:hover{
-    background-color: $main-light;
+  &:hover, &:active, &:focus, &:visited{
+    background-color: $main-light !important;
+    color: black !important;
+    border-color: $main !important;
   }
 }
 
@@ -46,4 +48,11 @@ form div.required label.control-label:after {
   &:hover, &:active{
     color: black;
   }
+}
+
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus{
+  background-color: $main;
+}
+.navbar-inverse .navbar-toggle{
+  border-color: $main;
 }

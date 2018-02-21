@@ -3,3 +3,47 @@
     cursor: pointer;
   }
 }
+
+.furniture-view{
+  .back-btn{
+    a{
+      color: $main;
+      text-decoration: none;
+    }
+  }
+
+  .title{
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 30px;
+  }
+
+  img{
+    border: solid $main-light 3px;
+  }
+
+
+  table{
+    font-size: 16px;
+    width: 100%;
+    border-collapse:separate;
+    border-spacing: 0 10px;
+    margin-left: 30px;
+    td{
+      padding-left: 30%;
+    }
+  }
+
+  .description{
+    margin-top: 30px;
+    margin-bottom: 50px;
+    padding: 0 15%;
+  }
+
+  .generate{
+    text-align: center;
+    .btn{
+      margin: 10px;
+    }
+  }
+}

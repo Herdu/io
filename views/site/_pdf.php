@@ -51,6 +51,10 @@ $this->registerCssFile("@web/css/themes/main.css", [
                     </td>
                 </tr>
                 <tr>
+                    <th>Stan</th>
+                    <td><?= $model->is_renovated ? "Po renowacji" : "Przed renowacją"; ?></td>
+                </tr>
+                <tr>
                     <th>
                         szerokość
                     </th>

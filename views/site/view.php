@@ -11,7 +11,14 @@ use yii\bootstrap\Modal;
 $this->title = $model->name;
 ?>
 <div class="row furniture-view">
-    <div class="col-sm-12">
+    <div class="col-sm-2 back-btn">
+        <a href="site/index">
+            < powrót
+        </a>
+    </div>
+
+
+    <div class="col-sm-12 title">
         <h1><?= Html::encode($this->title) ?></h1>
     </div>
 
@@ -28,25 +35,35 @@ $this->title = $model->name;
     </div>
 
     <div class="col-sm-6">
-        <div>
-            styl: <?= $model->furnitureStyle->name; ?>
-        </div>
-        <div>
-            okres: <?= $model->period; ?>
-        </div>
-        <div>
-            wymiary:
-            <div><?= $model->width; ?> [szerokość]</div>
-            <div><?= $model->height; ?> [wysokość]</div>
-            <div><?= $model->depth; ?> [głębokość]</div>
-        </div>
+        <table>
+            <tr>
+                <th>Styl:</th>
+                <td><?= $model->furnitureStyle->name; ?></td>
+            </tr>
+            <tr>
+                <th>Okres:</th>
+                <td><?= $model->period; ?></td>
+            </tr>
+            <tr>
+                <th>Stan:</th>
+                <td><?= $model->is_renovated ? "Po renowacji" : "Przed renowacją"; ?></td>
+            </tr>
+            <tr>
+                <th>Wymiary:</th>
+                <td>
+                    <div><?= $model->width; ?> [szerokość]</div>
+                    <div><?= $model->height; ?> [wysokość]</div>
+                    <div><?= $model->depth; ?> [głębokość]</div>
+                </td>
+            </tr>
+        </table>
     </div>
 
-    <div class="col-sm-12">
+    <div class="col-sm-12 description">
         <?= $model->description; ?>
     </div>
 
-    <div class="col-sm-12">
+    <div class="col-sm-12 generate">
 
     <?php
 
