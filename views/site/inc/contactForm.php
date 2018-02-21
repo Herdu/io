@@ -41,7 +41,7 @@ use yii\helpers\Url;
 
         <div class="filter-pair">
             <div class="buttons">
-                <?= Html::submitButton('Wyślij', ['class' => 'btn blue-btn']) ?>
+                <?= Html::submitButton('Wyślij', ['class' => 'btn']) ?>
             </div>
         </div>
         <?php ActiveForm::end(); ?>

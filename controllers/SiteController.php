@@ -16,6 +16,7 @@ use app\models\MessageTitle;
 use app\models\Message;
 use yii\helpers\ArrayHelper;
 use app\models\Picture;
+use kartik\mpdf\Pdf;
 
 class SiteController extends Controller
 {
@@ -27,7 +28,7 @@ class SiteController extends Controller
 
     public function behaviors(){
 
-        $guestActions = ['index','contact', 'admin', 'services', 'gallery', 'view'];
+        $guestActions = ['index','contact', 'admin', 'services', 'gallery', 'view', 'pdf'];
 
         $loggedActions = $guestActions +
             [
@@ -166,6 +167,28 @@ class SiteController extends Controller
             'message' => $message,
             'messageTitles' => $messageTitles,
         ]);
+    }
+
+    public function actionPdf($id, $withPhotos = true){
+        if (($model = Furniture::findOne($id)) == null) {
+            throw new NotFoundHttpException('Wybrany element nie istnieje, lub nie masz do niego uprawnień.');
+        }
+
+        $pdf = new Pdf([
+            'mode' => Pdf::MODE_BLANK,
+            'content' => $this->renderPartial('_pdf', array(
+                'model' => $model,
+                'withPhotos' => $withPhotos
+            )),
+            'options' => [
+                'title' => $model->name,
+            ],
+            'methods' => [
+                'SetHeader' => ['Wygenerowano '.date("m.d.y G:i:s")],
+                'SetFooter' => ['|Strona {PAGENO}|'],
+            ]
+        ]);
+        return $pdf->render();
     }
 
 

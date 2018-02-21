@@ -9,7 +9,7 @@ $this->title = 'gallery';
 ?>
 
 
-<div class="row">
+<div class="row gallery-row">
     <?php foreach($photos as $photo): ?>
     <div class="col-sm-2">
         <img src="<?= Url::to(Url::base().'/'.$photo->image_url); ?>" class="img-responsive">

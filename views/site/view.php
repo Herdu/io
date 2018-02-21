@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use yii\helpers\Url;
+use yii\bootstrap\Modal;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Furniture */
@@ -43,6 +44,28 @@ $this->title = $model->name;
 
     <div class="col-sm-12">
         <?= $model->description; ?>
+    </div>
+
+    <div class="col-sm-12">
+        <?= Html::a('Generuj dokument', ['pdf', 'id' => $model->id], ['class'=>'btn btn-primary']) ?>
+    </div>
+    <div class="col-sm-12">
+
+    <?php
+
+
+    Modal::begin([
+        'header' => '<h2>Wybierz rodzaj dokumentu</h2>',
+        'toggleButton' => ['label' => 'Wygeneruj dokument', 'class' => 'btn'],
+    ]);
+
+     echo Html::a('Ze zdjęciami', ['pdf', 'id' => $model->id, 'withPhotos' => true ], ['class'=>'btn btn-primary']);
+     echo Html::a('Bez zdjęć', ['pdf', 'id' => $model->id, 'withPhotos' => false], ['class'=>'btn btn-primary']);
+
+
+        Modal::end();
+
+    ?>
     </div>
 
 </div>
