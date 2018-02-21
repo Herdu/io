@@ -99,34 +99,71 @@ body {
 textarea {
   resize: none; }
 
-.filter-header {
-  display: block;
-  text-align: center; }
-  .filter-header h2 {
-    display: inline-block; }
-  .filter-header .filter-control {
-    font-size: 40px;
-    top: 10px;
-    margin-left: 30px; }
-    .filter-header .filter-control:hover {
-      cursor: pointer;
-      color: #885106; }
-  .filter-header #hide-filters {
-    display: none; }
+form div.required label.control-label:after {
+  content: " (wymagane) ";
+  color: #ff6000;
+  font-size: 12px; }
 
-.filters {
-  padding: 10px 30px;
-  text-align: center;
-  display: none; }
-  .filters .filter-pair {
-    display: inline-block;
-    margin-left: 20px;
-    margin-right: 20px; }
-  .filters .filter-item {
-    width: 200px;
-    display: inline-block; }
-  .filters .buttons {
-    padding-top: 25px; }
+.btn {
+  color: #885106;
+  background-color: white;
+  border: solid #885106 1px;
+  min-width: 100px;
+  padding: 7px 12px;
+  font-weight: bold;
+  border-radius: 5px;
+  margin: auto; }
+  .btn:hover {
+    background-color: #ffe39d; }
+
+.buttons {
+  text-align: center; }
+
+.navbar-inverse, .footer {
+  background-color: #ffe39d;
+  border-color: #885106;
+  color: #885106; }
+
+.navbar-inverse .navbar-brand,
+.navbar-inverse .navbar-nav > li > a {
+  color: #885106; }
+  .navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:active,
+  .navbar-inverse .navbar-nav > li > a:hover,
+  .navbar-inverse .navbar-nav > li > a:active {
+    color: black; }
+
+.furniture-row:hover {
+  cursor: pointer; }
+
+.filter-row {
+  margin-bottom: 50px; }
+  .filter-row .filter-header {
+    display: block;
+    text-align: center; }
+    .filter-row .filter-header h2 {
+      display: inline-block; }
+    .filter-row .filter-header .filter-control {
+      font-size: 40px;
+      top: 10px;
+      margin-left: 30px; }
+      .filter-row .filter-header .filter-control:hover {
+        cursor: pointer;
+        color: #885106; }
+    .filter-row .filter-header #hide-filters {
+      display: none; }
+  .filter-row .filters {
+    padding: 10px 30px;
+    text-align: center;
+    display: none; }
+    .filter-row .filters .filter-pair {
+      display: inline-block;
+      margin-left: 20px;
+      margin-right: 20px; }
+    .filter-row .filters .filter-item {
+      width: 200px;
+      display: inline-block; }
+    .filter-row .filters .buttons {
+      padding-top: 25px; }
 
 .catalog .grid-header {
   text-align: center; }
@@ -174,6 +211,42 @@ textarea {
   .catalog table tbody tr:nth-child(odd) {
     background-color: #ffdbc8; }
 
+.services .service {
+  position: relative;
+  text-align: center;
+  margin-bottom: 200px; }
+  .services .service img {
+    height: 400px;
+    width: auto;
+    object-fit: cover;
+    margin: auto;
+    border: solid #ffe39d 3px; }
+  .services .service h2 {
+    margin-top: 200px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #885106; }
+    @media only screen and (max-width: 768px) {
+      .services .service h2 {
+        margin-top: 20px;
+        margin-bottom: 20px; } }
+  .services .service .content-text {
+    padding-top: 30px;
+    text-align: justify;
+    text-indent: 50px; }
+
+.services .big-screen {
+  display: block !important; }
+  @media only screen and (max-width: 768px) {
+    .services .big-screen {
+      display: none !important; } }
+
+.services .small-screen {
+  display: none !important; }
+  @media only screen and (max-width: 768px) {
+    .services .small-screen {
+      display: block !important; } }
+
 .services .contact-row .col-sm-12 {
   background-image: url("./../image/wood-bg.jpg");
   background-size: cover;
@@ -204,15 +277,26 @@ textarea {
 .gallery-row > div img {
   object-fit: cover;
   height: 150px;
-  width: 100%; }
+  width: 100%;
+  border: solid #ffe39d 2px; }
+  .gallery-row > div img:hover {
+    border-color: #885106;
+    cursor: pointer; }
+  @media only screen and (max-width: 992px) {
+    .gallery-row > div img {
+      height: 100px; } }
+  @media only screen and (max-width: 768px) {
+    .gallery-row > div img {
+      margin: 20px auto;
+      width: 200px; } }
 
-#gallery-modal .modal-header {
-  text-align: center; }
-
-#gallery-modal .modal-dialog {
-  width: 100% !important; }
-
-#gallery-modal .modal-body {
-  text-align: center; }
-  #gallery-modal .modal-body img {
-    margin: auto; }
+#gallery-modal {
+  padding: 15px !important; }
+  #gallery-modal .modal-header {
+    text-align: center; }
+  #gallery-modal .modal-dialog {
+    width: 100% !important; }
+  #gallery-modal .modal-body {
+    text-align: center; }
+    #gallery-modal .modal-body img {
+      margin: auto; }

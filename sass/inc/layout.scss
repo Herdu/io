@@ -6,3 +6,44 @@ body {
 textarea{
   resize: none;
 }
+
+
+form div.required label.control-label:after {
+  content:" (wymagane) ";
+  color: #ff6000;
+  font-size: 12px;
+}
+
+.btn{
+  color: $main;
+  background-color: white;
+  border: solid $main 1px;
+  min-width: 100px;
+  padding: 7px 12px;
+  font-weight: bold;
+  border-radius: 5px;
+  margin: auto;
+  &:hover{
+    background-color: $main-light;
+  }
+}
+
+.buttons{
+  text-align: center;
+}
+
+.navbar-inverse, .footer {
+  background-color: $main-light;
+  border-color: $main;
+  color: $main;
+}
+
+.navbar-inverse .navbar-brand,
+.navbar-inverse .navbar-nav > li > a
+{
+  color: $main;
+
+  &:hover, &:active{
+    color: black;
+  }
+}

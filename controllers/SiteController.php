@@ -17,6 +17,8 @@ use app\models\Message;
 use yii\helpers\ArrayHelper;
 use app\models\Picture;
 use kartik\mpdf\Pdf;
+use app\models\FurnitureStyle;
+use app\models\FurnitureType;
 
 class SiteController extends Controller
 {
@@ -62,7 +64,7 @@ class SiteController extends Controller
     {
 
         $filterForm = new FurnitureFilterForm();
-        $query = Furniture::find();
+        $query = Furniture::find()->joinWith('furnitureStyle')->joinWith('furnitureType');
         $request = Yii::$app->request;
 
         if($filterForm->load($request->get())){
@@ -70,15 +72,23 @@ class SiteController extends Controller
         }
 
         $dataProvider = new ActiveDataProvider([
-            'query' => Furniture::find(),
+            'query' => $query,
             'sort' =>false,
         ]);
 
         $dataProvider->pagination->pageSize=5;
 
+        $types = FurnitureType::find()->all();
+        $types = ArrayHelper::map($types, 'id', 'name');
+
+        $styles = FurnitureStyle::find()->all();
+        $styles = ArrayHelper::map($styles, 'id', 'name');
+
         return $this->render('index', [
             'dataProvider' => $dataProvider,
             'filterForm' => $filterForm,
+            'styles' => $styles,
+            'types' => $types,
         ]);
     }
 

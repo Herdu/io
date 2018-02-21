@@ -10,13 +10,10 @@ class FurnitureFilterForm extends Model
 {
     public $priceFrom;
     public $priceTo;
-    public $numberOfRoomsFrom;
-    public $numberOfRoomsTo;
-    public $areaFrom;
-    public $areaTo;
-    public $storeyFrom;
-    public $storeyTo;
     public $isRenovated;
+    public $text;
+    public $styleId;
+    public $typeId;
 
     public function rules()
     {
@@ -34,7 +31,7 @@ class FurnitureFilterForm extends Model
                 'message' => 'Wartość pola "{attribute}" musi być liczbą całkowitą',
                 'tooSmall' => 'Wartość pola "{attribute}" nie może być ujemna',
             ],
-            [['isRenovated'], 'safe'],
+            [['isRenovated', 'text', 'styleId', 'typeId'], 'safe'],
         ];
     }
     public function attributeLabels()
@@ -43,26 +40,36 @@ class FurnitureFilterForm extends Model
             'priceFrom' => 'Cena od [zł]',
             'priceTo' => 'Cena do [zł]',
             'hasBalcony' => 'Po renowacji',
+            'text' => 'Wyszukaj'
         ];
     }
 
     public function buildQuery(&$query){
         if(!empty($this->priceFrom)){
-            $query = $query->andWhere(['>=','price', $this->priceFrom]);
+            $query = $query->andWhere(['>=','furniture.price', $this->priceFrom]);
         }
 
         if(!empty($this->priceTo)){
-            $query = $query->andWhere(['<=','price', $this->priceTo]);
+            $query = $query->andWhere(['<=','furniture.price', $this->priceTo]);
         }
 
 
         if(!empty($this->isRenovated)){
             if($this->isRenovated == 1){
-                $query = $query->andWhere(['=','is_renovated', '1']);
+                $query = $query->andWhere(['=','furniture.is_renovated', '1']);
             }
             if($this->isRenovated == 2){
-                $query = $query->andWhere(['=','is_renovated', '0']);
+                $query = $query->andWhere(['=','furniture.is_renovated', '0']);
             }
+        }
+
+        if(!empty($this->text)){
+            $query = $query->andWhere(['OR',
+                ['LIKE', 'furniture.name', $this->text],
+                ['LIKE', 'furniture.description', $this->text],
+                ['LIKE', 'furniture_style.name', $this->text],
+                ['LIKE', 'furniture_type.name', $this->text],
+            ]);
         }
     }
 }

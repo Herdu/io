@@ -47,9 +47,6 @@ $this->title = $model->name;
     </div>
 
     <div class="col-sm-12">
-        <?= Html::a('Generuj dokument', ['pdf', 'id' => $model->id], ['class'=>'btn btn-primary']) ?>
-    </div>
-    <div class="col-sm-12">
 
     <?php
 

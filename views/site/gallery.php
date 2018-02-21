@@ -12,7 +12,7 @@ $this->title = 'gallery';
 
 <div class="row gallery-row">
     <?php foreach($photos as $photo): ?>
-    <div class="col-sm-3">
+    <div class="col-sm-3 col-xs-6">
         <img src="<?= Url::to(Url::base().'/'.$photo->image_url); ?>" class="img-responsive" title="<?= $photo->title?>">
     </div>
     <?php endforeach; ?>

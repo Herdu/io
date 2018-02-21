@@ -8,7 +8,7 @@ use yii\helpers\Url;
 ?>
 
 
-<div class="row">
+<div class="row filter-row">
 
     <div class="filter-header">
         <h2>Filtrowanie</h2>
@@ -18,14 +18,15 @@ use yii\helpers\Url;
 
     </div>
 
+    <?php $form = ActiveForm::begin([
+        'method' => 'get',
+        'id' => 'filter-form',
+        'action' => Url::to(['index']),
+    ]); ?>
+
 
     <div class="filters">
 
-        <?php $form = ActiveForm::begin([
-            'method' => 'get',
-            'id' => 'filter-form',
-            'action' => Url::to(['list']),
-        ]); ?>
 
         <div class="filter-pair">
             <div class="filter-item">
@@ -44,18 +45,36 @@ use yii\helpers\Url;
             </div>
         </div>
 
+        <div class="filter-pair">
+            <div class="filter-item">
+                <?= $form->field($model, 'styleId')
+                    ->dropDownList($styles, ['prompt' => 'Wszystkie'])
+                ?>
+            </div>
+
+            <div class="filter-item">
+                <?= $form->field($model, 'typeId')
+                    ->dropDownList($types, ['prompt' => 'Wszystkie'])
+                ?>
+            </div>
+        </div>
 
 
         <div class="filter-pair">
             <div class="buttons">
                 <?= Html::submitButton('Szukaj', ['class' => 'btn blue-btn']) ?>
-                <?= Html::Button('Wyczyść filtry' , array( 'class'=>'btn white-btn', 'id'=>'clear-filter-form-btn')); ?>
+                <?= Html::Button('Wyczyść' , array( 'class'=>'btn white-btn', 'id'=>'clear-filter-form-btn')); ?>
             </div>
         </div>
 
-        <?php ActiveForm::end(); ?>
     </div>
 
+    <div class="col-sm-6 col-sm-offset-3">
+        <?= $form->field($model, 'text');
+        ?>
+    </div>
+
+    <?php ActiveForm::end(); ?>
 
 </div>
 

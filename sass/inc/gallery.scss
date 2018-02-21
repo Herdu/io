@@ -1,15 +1,32 @@
 .gallery-row{
+
   &>div{
     img{
       object-fit: cover;
       height: 150px;
       width: 100%;
+      border: solid $main-light 2px;
+
+      &:hover{
+        border-color: $main;
+        cursor: pointer;
+      }
+
+      @media only screen and (max-width: 992px) {
+        height: 100px;
+      }
+
+      @media only screen and (max-width: 768px) {
+        margin: 20px auto;
+        width: 200px;
+      }
     }
   }
 }
 
 
 #gallery-modal{
+  padding: 15px !important;
   .modal-header{
     text-align: center;
   }

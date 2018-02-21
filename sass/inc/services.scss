@@ -1,4 +1,51 @@
 .services{
+  .service{
+    position: relative;
+    text-align: center;
+    margin-bottom: 200px;
+    img{
+      height: 400px;
+      width: auto;
+      object-fit: cover;
+      margin: auto;
+      border: solid $main-light 3px;
+    }
+
+    h2{
+      margin-top: 200px;
+      font-size: 40px;
+      font-weight: bold;
+      color: $main;
+
+      @media only screen and (max-width: 768px) {
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+    }
+
+    .content-text{
+      padding-top: 30px;
+      text-align: justify;
+      text-indent: 50px;
+    }
+  }
+
+  .big-screen {
+    display: block !important;
+    @media only screen and (max-width: 768px) {
+      display: none !important;
+    }
+  }
+
+  .small-screen {
+    display: none !important;
+    @media only screen and (max-width: 768px) {
+      display: block !important;
+    }
+  }
+
+
+
   & .contact-row{
     .col-sm-12{
       background-image: url('./../image/wood-bg.jpg');
