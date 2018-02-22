@@ -5,10 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Furniture */
 
-$this->title = 'Zaktualizuj mebel: {nameAttribute}';
-$this->params['breadcrumbs'][] = ['label' => 'Meble', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Edycja';
+$this->title = 'Zaktualizuj mebel: '.$model->name;
+
 ?>
 <div class="furniture-update">
 

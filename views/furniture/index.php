@@ -8,7 +8,6 @@ use yii\helpers\Url;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Meble';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="furniture-index">
 
@@ -43,6 +42,24 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'raw',
                 'value' => function ($model) {
                     return '<span class="td-label">Cena: </span>'.$model->price."zł.";
+
+                }
+            ],
+
+            [
+                'label' => 'Styl',
+                'format' => 'raw',
+                'value' => function ($model) {
+                    return $model->furnitureStyle->name;
+
+                }
+            ],
+
+            [
+                'label' => 'Typ',
+                'format' => 'raw',
+                'value' => function ($model) {
+                    return $model->furnitureType->name;
 
                 }
             ],

@@ -28,35 +28,26 @@ class SiteController extends Controller
      * @inheritdoc
     */
 
-    public function behaviors(){
-
-        $guestActions = ['index','contact', 'admin', 'services', 'gallery', 'view', 'pdf'];
-
-        $loggedActions = $guestActions +
-            [
-                ['logout']
-            ];
-
+    public function behaviors()
+    {
         return [
             'access' => [
                 'class' => AccessControl::className(),
+                'only' => ['logout'],
                 'rules' => [
                     [
+                        'actions' => ['logout'],
                         'allow' => true,
-                        'actions' => $guestActions,
-                        'roles' => ['?'],
-                    ],
-                    [
-                        'allow' => true,
-                        'actions' => $loggedActions,
                         'roles' => ['@'],
                     ],
-                    [
-                        'allow' => true,
-                        'actions' => ['error'],
-                    ],
                 ],
-            ]
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'logout' => ['post'],
+                ],
+            ],
         ];
     }
 
@@ -148,7 +139,7 @@ class SiteController extends Controller
         $loginForm = new LoginForm();
         if ($loginForm->load(Yii::$app->request->post()) && $loginForm->login()) {
             Yii::$app->getSession()->addFlash('success', 'Pomyślnie zalogowano');
-            return $this->redirect(['site/index']);
+            return $this->redirect(['furniture/list']);
         }
         return $this->render('admin', [
             'model' => $loginForm,

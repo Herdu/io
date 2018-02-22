@@ -12,6 +12,7 @@ use yii\web\UploadedFile;
 use app\models\FurnitureType;
 use app\models\FurnitureStyle;
 use yii\helpers\ArrayHelper;
+use yii\filters\AccessControl;
 
 /**
  * FurnitureController implements the CRUD actions for Furniture model.
@@ -23,15 +24,21 @@ class FurnitureController extends Controller
      */
     public $bodyClass = 'furniture-controller';
 
-    public function behaviors()
-    {
+    public function behaviors(){
+
+        $actions = ['index', 'edit', 'create', 'update', 'delete', 'view'];
+
         return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => $actions,
+                        'roles' => ['@'],
+                    ]
                 ],
-            ],
+            ]
         ];
     }
 

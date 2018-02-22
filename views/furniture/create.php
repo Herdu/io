@@ -7,8 +7,7 @@ use yii\helpers\Html;
 /* @var $model app\models\Furniture */
 
 $this->title = 'Dodaj mebel';
-$this->params['breadcrumbs'][] = ['label' => 'Meble', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="furniture-create">
 

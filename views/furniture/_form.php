@@ -39,7 +39,7 @@ use yii\helpers\Url;
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6, 'maxlength' => true]) ?>
 
-    <?= $form->field($model, 'period')->textInput(['type'=>'number']) ?>
+    <?= $form->field($model, 'period')->textInput([]) ?>
 
     <?= $form->field($model, 'is_renovated')->checkbox()?>
 

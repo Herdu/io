@@ -49,19 +49,22 @@ AppAsset::register($this);
     if (!Yii::$app->user->isGuest){
 
         $loggedMenu = [
-            [
+            ['label' => 'Meble', 'url' => Url::to(['furniture/index'])],
+            ['label' => 'Galeria', 'url' => Url::to(['picture/index'])],
+
+            (
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post')
                 . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->email . ')',
-                    ['class' => 'btn btn-link logout']
-                )
+                    'Wyloguj',
+                    ['class' => 'logout btn', 'data-confirm' => 'Czy na pewno chcesz się wylogować?']
+                    )
                 . Html::endForm()
                 . '</li>'
-            ],
+            )
         ];
 
-        $menu = $menu + $loggedMenu;
+        $menu = $loggedMenu;
     }
 
 

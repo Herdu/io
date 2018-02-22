@@ -2,13 +2,13 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Furniture */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Meble', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="furniture-view">
 
@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Usuń', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Czy na pewno?',
+                'confirm' => 'Czy na pewno chcesz usunąć ten element?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -28,10 +28,14 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
+            [
+                'attribute'=>'photo',
+                'value'=> Url::base().'/'.$model->image_url,
+                'format' => ['image',['width'=>'100%','height'=>'auto']],
+            ],
             'id',
             'name',
             'price',
-            'image_url:url',
             'description',
             'is_renovated',
             'furniture_type_id',

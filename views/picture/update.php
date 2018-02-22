@@ -5,10 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Picture */
 
-$this->title = 'Update Picture: {nameAttribute}';
-$this->params['breadcrumbs'][] = ['label' => 'Pictures', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = 'Zaktualizuj zdjęcie: '. $model->title;
+
 ?>
 <div class="picture-update">
 

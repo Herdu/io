@@ -2,24 +2,24 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Picture */
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Pictures', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="picture-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Edytuj', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Usuń', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Czy na pewno chcesz usunąć ten element?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -29,9 +29,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'image_url:url',
             'title',
+            [
+                'attribute'=>'photo',
+                'value'=> Url::base().'/'.$model->image_url,
+                'format' => ['image',['width'=>'100%','height'=>'auto']],
+            ],
         ],
+
     ]) ?>
 
 </div>

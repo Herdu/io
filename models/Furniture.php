@@ -40,7 +40,7 @@ class Furniture extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'price', 'description', 'is_renovated', 'furniture_type_id', 'furniture_style_id'], 'required' , 'message'=>'Pole "{attribute}" nie może pozostać puste.'],
+            [['name', 'price', 'description', 'is_renovated', 'furniture_type_id', 'furniture_style_id', 'width', 'height', 'depth' ,'period'], 'required' , 'message'=>'Pole "{attribute}" nie może pozostać puste.'],
             [['price'], 'number' ,  'message'=>'Pole "{attribute}" musi być liczbą.'],
             [['is_renovated', 'furniture_type_id', 'furniture_style_id','width', 'height','depth'], 'integer' ,  'message'=>'Pole "{attribute}" musi być liczbą całkowitą.'],
             [['name', 'image_url'], 'string', 'max' => 128, 'message' => 'Maksymalna długość to 128 znaków!'],
