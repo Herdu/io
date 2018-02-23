@@ -40,12 +40,12 @@ class Furniture extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'price', 'description', 'is_renovated', 'furniture_type_id', 'furniture_style_id', 'width', 'height', 'depth' ,'period'], 'required' , 'message'=>'Pole "{attribute}" nie może pozostać puste.'],
+            [['name', 'price', 'description', 'is_renovated', 'furniture_type_id', 'furniture_style_id', 'width', 'height', ], 'required' , 'message'=>'Pole "{attribute}" nie może pozostać puste.'],
             [['price'], 'number' ,  'message'=>'Pole "{attribute}" musi być liczbą.'],
             [['is_renovated', 'furniture_type_id', 'furniture_style_id','width', 'height','depth'], 'integer' ,  'message'=>'Pole "{attribute}" musi być liczbą całkowitą.'],
             [['name', 'image_url'], 'string', 'max' => 128, 'message' => 'Maksymalna długość to 128 znaków!'],
             [['period'], 'string', 'max' => 64, 'message' => 'Maksymalna długość to 64 znaki!'],
-            [['description'], 'string', 'max' => 1024 , 'message' => 'Maksymalna długość to 1024 znaków!' ],
+            [['description'], 'string', 'max' => 1024 , 'tooLong' => 'Maksymalna długość to 1024 znaków!' ],
             [['furniture_style_id'], 'exist', 'skipOnError' => true, 'targetClass' => FurnitureStyle::className(), 'targetAttribute' => ['furniture_style_id' => 'id']],
             [['furniture_type_id'], 'exist', 'skipOnError' => true, 'targetClass' => FurnitureType::className(), 'targetAttribute' => ['furniture_type_id' => 'id']],
             [['imageFile'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg',  'message'=>'Niepoprawny format pliku.', 'wrongExtension'=>'Dozwolone rozszerzenia pliku to png i jpg.', 'tooBig' => 'Plik jest za duży. Maksymalny rozmiar to 2MB.'],

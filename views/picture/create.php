@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Picture */
 
-$this->title = 'Create Picture';
+$this->title = 'Dodaj zdjęcie';
 
 ?>
 <div class="picture-create">
