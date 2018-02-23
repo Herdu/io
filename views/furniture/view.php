@@ -37,9 +37,33 @@ $this->title = $model->name;
             'name',
             'price',
             'description',
-            'is_renovated',
-            'furniture_type_id',
-            'furniture_style_id',
+            [
+                'label' => 'Po renowacji',
+                'format' => 'raw',
+                'contentOptions' => ['class' => 'style'],
+                'value' => function ($model) {
+                    return $model->is_renovated? "Tak" : "Nie";
+
+                }
+            ],
+            [
+                'label' => 'Styl',
+                'format' => 'raw',
+                'contentOptions' => ['class' => 'style'],
+                'value' => function ($model) {
+                    return $model->furnitureStyle->name;
+
+                }
+            ],
+            [
+                'label' => 'Typ',
+                'format' => 'raw',
+                'contentOptions' => ['class' => 'style'],
+                'value' => function ($model) {
+                    return $model->furnitureType->name;
+
+                }
+            ]
         ],
     ]) ?>
 
