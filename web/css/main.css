@@ -140,6 +140,23 @@ form div.required label.control-label:after {
 .navbar-inverse .navbar-toggle {
   border-color: #885106; }
 
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+  z-index: 3;
+  color: #885106;
+  cursor: default;
+  background-color: #ffe39d;
+  border-color: #885106; }
+
+.pagination > li > a, .pagination > li > span {
+  color: #885106; }
+
+.pagination > li > a:hover, .pagination > li > span:hover, .pagination > li > a:focus, .pagination > li > span:focus {
+  color: black; }
+
+.pagination {
+  margin: auto;
+  display: table; }
+
 .furniture-row:hover {
   cursor: pointer; }
 
@@ -392,3 +409,19 @@ form div.required label.control-label:after {
 .furniture-index img, .picture-index img {
   max-height: 100px;
   max-width: 200px; }
+
+.admin-message {
+  border: solid #885106 1px;
+  margin-bottom: 20px;
+  background-color: #ffe39d;
+  color: #885106;
+  font-weight: bold;
+  padding: 20px;
+  position: relative; }
+  .admin-message span {
+    color: black;
+    font-weight: normal; }
+  .admin-message .message-action {
+    position: absolute;
+    right: 5px;
+    top: 5px; }

@@ -21,7 +21,6 @@ $this->title = $model->name;
         <h1><?= Html::encode($this->title) ?></h1>
     </div>
 
-
     <?php
     if(empty($model->image_url)){
         $url = Url::to('@web/image/placeholder.png');
@@ -30,7 +29,7 @@ $this->title = $model->name;
     }
     ?>
     <div class="col-sm-6">
-        <img src="<?=$url?>" class="img-responsive">
+        <img src="<?=$url?>" class="img-responsive" style="margin: auto">
     </div>
 
     <div class="col-sm-6">

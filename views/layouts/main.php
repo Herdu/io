@@ -49,6 +49,7 @@ AppAsset::register($this);
     if (!Yii::$app->user->isGuest){
 
         $loggedMenu = [
+            ['label' => 'Wiadomości', 'url' => Url::to(['admin/index'])],
             ['label' => 'Meble', 'url' => Url::to(['furniture/index'])],
             ['label' => 'Galeria', 'url' => Url::to(['picture/index'])],
 

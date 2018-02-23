@@ -4,3 +4,25 @@
     max-width: 200px;
   }
 }
+
+.admin-message{
+  border: solid $main 1px;
+  margin-bottom: 20px;
+  background-color: $main-light;
+  color: $main;
+  font-weight: bold;
+  padding: 20px;
+  position: relative;
+
+  span{
+    color: black;
+    font-weight: normal;
+  }
+
+  .message-action {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+  }
+
+}

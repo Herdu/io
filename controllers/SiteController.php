@@ -111,6 +111,7 @@ class SiteController extends Controller
 
         $messageTitles = MessageTitle::find()->asArray()->all();
         $messageTitles = ArrayHelper::getColumn($messageTitles, 'name');
+        $messageTitles = array_combine($messageTitles, $messageTitles);
 
         return $this->render('contact', [
             'message' => $model,
@@ -139,7 +140,7 @@ class SiteController extends Controller
         $loginForm = new LoginForm();
         if ($loginForm->load(Yii::$app->request->post()) && $loginForm->login()) {
             Yii::$app->getSession()->addFlash('success', 'Pomyślnie zalogowano');
-            return $this->redirect(['furniture/list']);
+            return $this->redirect(['furniture/index']);
         }
         return $this->render('admin', [
             'model' => $loginForm,
@@ -154,7 +155,7 @@ class SiteController extends Controller
         $message = new Message();
 
         if ($message->load(Yii::$app->request->post()) && $message->validate()){
-            if($model->save()) {
+            if($message->save()) {
                 \Yii::$app->getSession()->setFlash('success', 'Pomyślnie wysłano wiadomość');
 
                 $message = new Message();
@@ -169,6 +170,8 @@ class SiteController extends Controller
         $messageTitles = ArrayHelper::getColumn($messageTitles, 'name');
 
         $messageTitles = array_merge([$model->name], $messageTitles);
+
+        $messageTitles = array_combine($messageTitles, $messageTitles);
 
         return $this->render('view', [
             'model' => $model,
