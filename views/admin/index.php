@@ -22,7 +22,7 @@ $this->title = 'Wiadomości z formularzy';
                     echo $message->message_title
                 ?>
             </p>
-            <p class="message-text"><span>kto: </span><?=$message->text ?></p>
+            <p class="message-text"><span>Treść: </span><?=$message->text ?></p>
 
 
             <p class="message-action">
